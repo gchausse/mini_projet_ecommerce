@@ -99,63 +99,45 @@
         </footer>
         <script type="text/javascript" src="./static/external/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="./static/external/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="./static/javascript/catalogue.js"></script>
         <script type="text/javascript" src="./static/javascript/script.js"></script>
         <script type="text/javascript">
         $(document).ready(function(){
-            var panier_json = localStorage.getItem("objet");
-            var panier = JSON.parse(panier_json);
-            var totalht = 0;
-            var totalttc = 0;
-            console.log(Object.keys(panier).length)
-            if(Object.keys(panier).length < 1){
-                $("#tableau").append($("<tr></tr>").append($("<td>Votre panier est vide</td>").css('text-align', 'center')));
-            }
-            for (var x in panier) {
+            var catalog = {}
 
-                $("#tableau").append($('<tr></tr>').append($('<td scope="row"></td>').html(catalog[x].name).append('<button class="suprime">Supprimer</button>')).append($('<td></td>').html(catalog[x].price)).append($('<td id='+x+'></td>').append($('<span></span>').html(panier[x])).append('<button class="plus">+</button><button  class="moins">-</button>')).append($('<td></td>').html((catalog[x].price*panier[x]).toFixed(2))).append($('<td></td>').html((catalog[x].price*panier[x]*1.2).toFixed(2))))
-
-                totalht = totalht + parseFloat((catalog[x].price*panier[x]))
-                $("#prixtoto td:nth-child(1)").html(totalht.toFixed(2)+" Euros");
-
-                totalttc = totalttc + parseFloat((catalog[x].price*panier[x]*1.2));
-                $("#prixtoto td:nth-child(2)").html(totalttc.toFixed(2)+" Euros");
-            }
-
-            $(".plus").click(function(){
-                var modifquantite = $($(this).parent()).attr('id')
-                console.log(modifquantite);
-                panier[modifquantite] = panier[modifquantite] + 1;
-                panier_json = JSON.stringify(panier);
-                localStorage.setItem("objet",panier_json);
-
-                $(this).parent().find("span").html(panier[modifquantite]);
-                $(this).parent().next().html((catalog[modifquantite].price*panier[modifquantite]));
-                $(this).parent().next().next().html((catalog[modifquantite].price*panier[modifquantite]*1.2));
-
-                panier_json = localStorage.getItem("objet");
-                panier = JSON.parse(panier_json);
-                $("#prixtoto td:nth-child(2)").html();
-                $("#prixtoto td:nth-child(1)").html();
-                totalht = 0;
-                totalttc = 0;
-                for (var x in panier) {
-                    totalht = totalht + parseFloat((catalog[x].price*panier[x]))
-                    totalttc = totalttc + parseFloat((catalog[x].price*panier[x]*1.2));
+            $.get (
+                'https://codi-e-commerce.herokuapp.com/',
+                'false',
+                retour,
+                'json'
+            );
+            function retour (x){
+                catalog  = x;
+                var panier_json = localStorage.getItem("objet");
+                var panier = JSON.parse(panier_json);
+                var totalht = 0;
+                var totalttc = 0;
+                console.log(Object.keys(panier).length)
+                if(Object.keys(panier).length < 1){
+                    $("#tableau").append($("<tr></tr>").append($("<td>Votre panier est vide</td>").css('text-align', 'center')));
                 }
-                $("#prixtoto td:nth-child(2)").html(totalttc.toFixed(2)+" Euros");
-                $("#prixtoto td:nth-child(1)").html(totalht.toFixed(2)+" Euros");
+                for (var x in panier) {
 
-            })
+                    $("#tableau").append($('<tr></tr>').append($('<td scope="row"></td>').html(catalog[x].name).append('<button class="suprime">Supprimer</button>')).append($('<td></td>').html(catalog[x].price)).append($('<td id='+x+'></td>').append($('<span></span>').html(panier[x])).append('<button class="plus">+</button><button  class="moins">-</button>')).append($('<td></td>').html((catalog[x].price*panier[x]).toFixed(2))).append($('<td></td>').html((catalog[x].price*panier[x]*1.2).toFixed(2))))
 
-            $(".moins").click(function(){
-                var modifquantite = $($(this).parent()).attr('id')
-                if(panier[modifquantite] > 0){
-                    panier[modifquantite]--;
+                    totalht = totalht + parseFloat((catalog[x].price*panier[x]))
+                    $("#prixtoto td:nth-child(1)").html(totalht.toFixed(2)+" Euros");
+
+                    totalttc = totalttc + parseFloat((catalog[x].price*panier[x]*1.2));
+                    $("#prixtoto td:nth-child(2)").html(totalttc.toFixed(2)+" Euros");
+                }
+
+                $(".plus").click(function(){
+                    var modifquantite = $($(this).parent()).attr('id')
+                    console.log(modifquantite);
+                    panier[modifquantite] = panier[modifquantite] + 1;
                     panier_json = JSON.stringify(panier);
                     localStorage.setItem("objet",panier_json);
 
-                    $(this).parent().find("span").html(panier[modifquantite]);
                     $(this).parent().find("span").html(panier[modifquantite]);
                     $(this).parent().next().html((catalog[modifquantite].price*panier[modifquantite]));
                     $(this).parent().next().next().html((catalog[modifquantite].price*panier[modifquantite]*1.2));
@@ -172,37 +154,65 @@
                     }
                     $("#prixtoto td:nth-child(2)").html(totalttc.toFixed(2)+" Euros");
                     $("#prixtoto td:nth-child(1)").html(totalht.toFixed(2)+" Euros");
-                }
 
-            })
-            $(".suprime").click(function(){
-                delete panier[$(this).parent().next().next().attr('id')];
-                panier_json = JSON.stringify(panier);
-                localStorage.setItem("objet",panier_json);
-                panier_json = localStorage.getItem("objet");
-                panier = JSON.parse(panier_json);
-                $(this).parent().parent().remove();
-                totalht = 0;
-                totalttc = 0;
+                })
 
-                for (var x in panier) {
-                    totalht = totalht + parseFloat((catalog[x].price*panier[x]))
-                    totalttc = totalttc + parseFloat((catalog[x].price*panier[x]*1.2));
-                }
-                $("#prixtoto td:nth-child(2)").html(totalttc.toFixed(2)+" Euros");
-                $("#prixtoto td:nth-child(1)").html(totalht.toFixed(2)+" Euros");
+                $(".moins").click(function(){
+                    var modifquantite = $($(this).parent()).attr('id')
+                    if(panier[modifquantite] > 0){
+                        panier[modifquantite]--;
+                        panier_json = JSON.stringify(panier);
+                        localStorage.setItem("objet",panier_json);
 
-            })
-            $("#viderpanier").click(function(){
-                panier = {};
-                panier_json = JSON.stringify(panier);
-                localStorage.setItem("objet",panier_json);
-                $("#tableau").children().remove();
-                $("#prixtoto td:nth-child(2)").html("0 Euros");
-                $("#prixtoto td:nth-child(1)").html("0 Euros");
-                $("#tableau").append($("<tr></tr>").append($("<td>Votre panier est vide</td>").css('text-align', 'center')));
-                console.log(panier.length);
-            })
+                        $(this).parent().find("span").html(panier[modifquantite]);
+                        $(this).parent().find("span").html(panier[modifquantite]);
+                        $(this).parent().next().html((catalog[modifquantite].price*panier[modifquantite]));
+                        $(this).parent().next().next().html((catalog[modifquantite].price*panier[modifquantite]*1.2));
+
+                        panier_json = localStorage.getItem("objet");
+                        panier = JSON.parse(panier_json);
+                        $("#prixtoto td:nth-child(2)").html();
+                        $("#prixtoto td:nth-child(1)").html();
+                        totalht = 0;
+                        totalttc = 0;
+                        for (var x in panier) {
+                            totalht = totalht + parseFloat((catalog[x].price*panier[x]))
+                            totalttc = totalttc + parseFloat((catalog[x].price*panier[x]*1.2));
+                        }
+                        $("#prixtoto td:nth-child(2)").html(totalttc.toFixed(2)+" Euros");
+                        $("#prixtoto td:nth-child(1)").html(totalht.toFixed(2)+" Euros");
+                    }
+
+                })
+                $(".suprime").click(function(){
+                    delete panier[$(this).parent().next().next().attr('id')];
+                    panier_json = JSON.stringify(panier);
+                    localStorage.setItem("objet",panier_json);
+                    panier_json = localStorage.getItem("objet");
+                    panier = JSON.parse(panier_json);
+                    $(this).parent().parent().remove();
+                    totalht = 0;
+                    totalttc = 0;
+
+                    for (var x in panier) {
+                        totalht = totalht + parseFloat((catalog[x].price*panier[x]))
+                        totalttc = totalttc + parseFloat((catalog[x].price*panier[x]*1.2));
+                    }
+                    $("#prixtoto td:nth-child(2)").html(totalttc.toFixed(2)+" Euros");
+                    $("#prixtoto td:nth-child(1)").html(totalht.toFixed(2)+" Euros");
+
+                })
+                $("#viderpanier").click(function(){
+                    panier = {};
+                    panier_json = JSON.stringify(panier);
+                    localStorage.setItem("objet",panier_json);
+                    $("#tableau").children().remove();
+                    $("#prixtoto td:nth-child(2)").html("0 Euros");
+                    $("#prixtoto td:nth-child(1)").html("0 Euros");
+                    $("#tableau").append($("<tr></tr>").append($("<td>Votre panier est vide</td>").css('text-align', 'center')));
+                    console.log(panier.length);
+                })
+            }
         })
         </script>
     </body>

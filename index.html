@@ -73,41 +73,7 @@
                                 <li data-target="#myCarousel" data-slide-to="2"></li>
                               </ol>
 
-                              <!-- Wrapper for slides -->
-                              <!-- <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                  <img class="img-responsive"  src="./static/img/15-objets-inutiles-donc-indispensables2.jpg" alt="">
-                                  <div class="carousel-caption">
-                                    <h3>Le barbecue</h3>
-                                    <p>Le barbecue repliable et pratique</p>
-                                  </div>
-                                </div>
 
-                                <div class="item">
-                                  <img class="img-responsive" src="./static/img/15-objets-inutiles-donc-indispensables3.jpg" alt="">
-                                  <div class="carousel-caption">
-                                    <h3>L tasse</h3>
-                                    <p>Enfin une tasse qui ne faudrat pas remplir toutes les 5 secondes</p>
-                                  </div>
-                                </div>
-
-                                <div class="item">
-                                  <img class="img-responsive" src="./static/img/15-objets-inutiles-donc-indispensables6.jpg" alt="">
-                                  <div class="carousel-caption">
-                                    <h3>Le distributeur</h3>
-                                    <p>Ideal pour vos soirée</p>
-                                  </div>
-                                </div>
-
-                                <div class="item">
-                                  <img class="img-responsive" src="./static/img/main-libre-burger.jpg" alt="">
-                                  <div class="carousel-caption">
-                                      <h3>Le kit main libre</h3>
-                                      <p>Ideal pour vos soirée gaming</p>
-                                  </div>
-                                </div>
-
-                              </div> -->
                         </div>
                     </section>
                 </div>
@@ -126,21 +92,33 @@ Wikipedia® est une marque déposée de la Wikimedia Foundation, Inc., organisat
         </footer>
         <script type="text/javascript" src="./static/external/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="./static/external/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="./static/javascript/catalogue.js"></script>
         <script type="text/javascript" src="./static/javascript/script_home.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-                // console.log(catalog[0].pictures[0]);
-                $('<div class="carousel-inner" role="listbox"></div>').appendTo("#myCarousel")
+                var catalog = {}
+
+                $.get (
+                    'https://codi-e-commerce.herokuapp.com/',
+                    'false',
+                    retour,
+                    'json'
+                );
+                function retour (x){
+                    catalog  = x;
+
+                    $('<div class="carousel-inner" role="listbox"></div>').appendTo("#myCarousel")
                     for (var i = 0; i < 3; i++) {
                         if(i == 0){
                             var random1 = Math.floor(Math.random()*catalog.length)
-                        $('<div class="item active"></div>').appendTo($("div[role=listbox]")).append($('<img class="img-responsive"></img>').attr("src", catalog[random1].pictures[0])).append($('<div class="carousel-caption"></div>').append($('<h3></h3>').html(catalog[random1].name)).append($('<p></p>').html(catalog[random1].description.substring(0, 100))));
-                    }else{
+                            $('<div class="item active"></div>').appendTo($("div[role=listbox]")).append($('<img class="img-responsive"></img>').attr("src", catalog[random1].pictures[0])).append($('<div class="carousel-caption"></div>').append($('<h3></h3>').html(catalog[random1].name)).append($('<p></p>').html(catalog[random1].description.substring(0, 100))));
+                        }else{
                             var random1 = Math.floor(Math.random()*catalog.length)
-                        $('<div class="item"></div>').appendTo($("div[role=listbox]")).append($('<img class="img-responsive"></img>').attr("src", catalog[random1].pictures[0])).append($('<div class="carousel-caption"></div>').append($('<h3></h3>').html(catalog[random1].name)).append($('<p></p>').html(catalog[random1].description.substring(0, 100))));
+                            $('<div class="item"></div>').appendTo($("div[role=listbox]")).append($('<img class="img-responsive"></img>').attr("src", catalog[random1].pictures[0])).append($('<div class="carousel-caption"></div>').append($('<h3></h3>').html(catalog[random1].name)).append($('<p></p>').html(catalog[random1].description.substring(0, 100))));
+                        }
                     }
                 }
+
+
 
             })
 
