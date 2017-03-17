@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Homepage</title>
+        <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=News+Cycle" rel="stylesheet">
+        <link rel="stylesheet" href="./static/external/bootstrap/dist/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" media="screen and (max-width: 768px)" href="smallscreen.css" type="text/css" /> -->
+        <link rel="stylesheet" href="./static/css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class="page-header">
+                <div class="container">
+                    <div class="row">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <div class="col-xs-12">
+                                    <h1 class="navbar-brand col-xs-12">La Boutique des Objets Révolutionnaires</h1>
+                                    <div class="navbar-toggle col-xs-12">
+                                            <button class="collapsed btn btn-default navbar-btn pull-right" type="button" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                                               <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+                                        <div class="collapse navbar-collapse" id="menu">
+                                             <ul class="list-group">
+                                                 <li><a href="./index1.html" class="list-group-item">Home</a></li>
+                                                 <li><a href="./index2.html" class="list-group-item">Recherche</a></li>
+                                                 <li><a href="./index3.html" class="list-group-item">Panier</a></li>
+                                                 <li><a href="./index4.html" class="list-group-item">Panier</a></li>
+                                                 <li><a href="./index5.html" class="list-group-item">Contact</a></li>
+                                             </ul>
+                                        </div>
+                                    </div>
+                                    <ul class="nav navbar-nav grand-ecran col-sm-12">
+                                        <li><a href="./index.html">Home</a></li>
+                                        <li><a href="./index2.html">Recherche</a></li>
+                                        <li  class="active"><a href="./index3.html?nom=toto">Page Produit</a></li>
+                                        <li><a href="./index4.html">Panier</a></li>
+                                        <li><a href="./index5.html">Contact</a></li>
+                                    </ul>
+                               </div>
+                           </div>
+                       </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <h2></h2>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <button id="ajoutpanier"type="button" name="button" class="btn btn-primary">Ajouter au panier</button>
+                        <p id="prix"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <img src="" alt="" class="img-responsive">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <p id="description">Description de l'objethufvjsnovoso</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>Copyright ©</p>
+                        <p>Droit d'auteur : les textes sont disponibles sous licence Creative Commons attribution, partage dans les mêmes conditions ; d’autres conditions peuvent s’appliquer. Voyez les conditions d’utilisation pour plus de détails, ainsi que les crédits graphiques. En cas de réutilisation des textes de cette page, voyez comment citer les auteurs et mentionner la licence.
+Wikipedia® est une marque déposée de la Wikimedia Foundation, Inc., organisation de bienfaisance régie par le paragraphe 501(c)(3) du code fiscal des États-Unis.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script type="text/javascript" src="./static/external/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="./static/external/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./static/javascript/get_param.js"></script>
+        <script type="text/javascript" src="./static/javascript/catalogue.js"></script>
+        <script type="text/javascript" src="./static/javascript/script_produit.js"></script>
+        <script type="text/javascript">
+        // console.log(GET_PARAM("nom"));
+        </script>
+    </body>
+</html>

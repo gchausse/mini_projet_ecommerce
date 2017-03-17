@@ -1,0 +1,116 @@
+header{
+    vertical-align: middle;
+    text-align: center;
+}
+header li{
+    list-style: none;
+}
+header li a {
+    min-height: 3em;
+    line-height: 3em;
+}
+.navbar-toggle{
+    margin-right: 0;
+}
+header .page-header{
+    margin-bottom: 0;
+}
+.grand-ecran{
+    display: flex;
+    justify-content: space-around;
+}
+header, footer{
+    background-size: contain;
+    background-image: url(../img/12dc_fond_d_ecran.png);
+}
+.navbar-default{
+    background-image:radial-gradient(white, black);
+}
+h1{
+    color: black !important;
+    font-family: 'Droid Serif', serif !important;
+    font-size: 1.2em !important;
+    text-transform: capitalize;
+}
+.grand-ecran li a{
+    color: white !important;
+}
+.grand-ecran li a:hover{
+    color: black !important;
+}
+ul:not(.pagination) .active a{
+    background-color: black !important;
+}
+footer .container{
+    background-image:radial-gradient(white, rgb(92, 92, 92));
+}
+footer p{
+    color: black;
+}
+
+.img-responsive{
+    margin: 0 auto;
+    /*min-height: 50em;*/
+    max-height: 35em;
+}
+main{
+    background-image:radial-gradient(white, black);
+}
+main .container{
+    background-image:radial-gradient(white, grey);
+}
+main p{
+    font-family: 'News Cycle', sans-serif;
+    font-size: 1.2em;
+    text-transform: capitalize;
+}
+h2{
+    font-size: 2em;
+    font-family: 'Droid Serif', serif;
+    text-transform: capitalize;
+    text-align: center;
+}
+.panel-body ul{
+    padding: 0;
+}
+.panel-body ul li{
+    text-align: center;
+    font-size: 1.2em;
+    margin: 1em 0;
+    list-style: none;
+}
+.panel-body ul li a{
+    padding: 0;
+}
+main input{
+    margin-bottom: 1em;
+    max-width: 20em;
+}
+button{
+    line-height: 2em;
+}
+#pagetableau{
+    min-height: 25em;
+}
+h4{
+    text-align: center;
+}
+#ex1Slider .slider-selection {
+	background: #BABABA;
+}
+#viderpanier{
+    width: 100%;
+    background-color: black;
+    color: white;
+
+}
+
+@media screen and (max-width: 768px) {
+    .grand-ecran {
+        display:none;
+
+    }
+    .panel-body ul li a{
+        padding: 0.5em 2em;
+    }
+}

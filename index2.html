@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Catalogue</title>
+        <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=News+Cycle" rel="stylesheet">
+        <link rel="stylesheet" href="./static/external/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./static/external/paginate/src/jquery.paginate.css">
+        <link rel="stylesheet" href="./static/external/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css">
+        <!-- <link rel="stylesheet" media="screen and (max-width: 768px)" href="smallscreen.css" type="text/css" /> -->
+        <link rel="stylesheet" href="./static/css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class="page-header">
+                <div class="container">
+                    <div class="row">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <div class="col-xs-12">
+                                    <h1 class="navbar-brand col-xs-12">La Boutique des Objets Révolutionnaires</h1>
+                                    <div class="navbar-toggle col-xs-12">
+                                            <button class="collapsed btn btn-default navbar-btn pull-right" type="button" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                                               <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+                                        <div class="collapse navbar-collapse" id="menu">
+                                             <ul class="list-group">
+                                                 <li><a href="./index1.html" class="list-group-item">Home</a></li>
+                                                 <li><a href="./index2.html" class="list-group-item">Recherche</a></li>
+                                                 <li><a href="./index3.html" class="list-group-item">Panier</a></li>
+                                                 <li><a href="./index4.html" class="list-group-item">Panier</a></li>
+                                                 <li><a href="./index5.html" class="list-group-item">Contact</a></li>
+                                             </ul>
+                                        </div>
+                                    </div>
+                                    <ul class="nav navbar-nav grand-ecran col-sm-12">
+                                        <li><a href="./index.html">Home</a></li>
+                                        <li class="active"><a href="./index2.html">Recherche</a></li>
+                                        <li><a href="./index3.html">Page Produit</a></li>
+                                        <li><a href="./index4.html">Panier</a></li>
+                                        <li><a href="./index5.html">Contact</a></li>
+                                    </ul>
+                               </div>
+                           </div>
+                       </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>Le catalogue</h2>
+                        Prix Min: <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="200" data-slider-step="1" data-slider-value="14"/>
+                        Prix Max: <input id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="0" data-slider-max="200" data-slider-step="1" data-slider-value="14"/>
+
+                        <button type="button" name="button" id="applique">Appliquer</button>
+                    </div>
+                    <div class="col-xs-12 col-xs-push-4">
+                        <label class="radio-inline">
+                          <input type="radio" name="inlineRadioOptions" id="ordrecroissant" value="option1"> Ordre croissant
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="inlineRadioOptions" id="ordredecroissant" value="option2"> Ordre decroissant
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="inlineRadioOptions" id="prixcroissant" value="option1"> Prix croissant
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" name="inlineRadioOptions" id="prixdecroissant" value="option2"> Prix decroissant
+                        </label>
+                    </div>
+                    <div class="col-xs-12">
+                        <input type="text" name="" value="">
+                        <button>
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="panel-group" id="accordion">
+                         <div class="panel panel-default">
+                           <div class="panel-heading">
+                             <h4 class="panel-title">
+                               <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                               Categorie 1</a>
+                             </h4>
+                           </div>
+                           <div id="collapse1" class="panel-collapse collapse in">
+                             <div class="panel-body">
+                                 <ul>
+                                     <li><a href="#">sous-cat1</a></li>
+                                     <li><a href="#">sous-cat2</a></li>
+                                     <li><a href="#">sous-cat3</a></li>
+                                 </ul>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="panel panel-default">
+                           <div class="panel-heading">
+                             <h4 class="panel-title">
+                               <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                               Categorie 2</a>
+                             </h4>
+                           </div>
+                           <div id="collapse2" class="panel-collapse collapse">
+                               <div class="panel-body">
+                                   <ul>
+                                       <li><a href="#">sous-cat1</a></li>
+                                       <li><a href="#">sous-cat2</a></li>
+                                       <li><a href="#">sous-cat3</a></li>
+                                   </ul>
+                                </div>
+                           </div>
+                         </div>
+                         <div class="panel panel-default">
+                           <div class="panel-heading">
+                             <h4 class="panel-title">
+                               <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                               Categorie 3</a>
+                             </h4>
+                           </div>
+                           <div id="collapse3" class="panel-collapse collapse">
+                             <div class="panel-body">
+                                 <ul>
+                                     <li><a href="#">sous-cat1</a></li>
+                                     <li><a href="#">sous-cat2</a></li>
+                                     <li><a href="#">sous-cat3</a></li>
+                                 </ul>
+                             </div>
+                           </div>
+                         </div>
+                     </div>
+                    </div>
+
+                    <div>
+                      <div id="portfolio" >
+
+
+                        <!-- <div class="span3 box col-xs-12 col-sm-3 ">
+                          <div class="thumbnail">
+                            <img src="//placehold.it/300x300">
+                            <div class="caption">
+                              <p>Nullam sapien massa, aliquam in cursus ut, ullamcorper in tortor.
+                    			Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.</p>
+                              	<div class="row-fluid">
+                                    <div class="span6">
+                                      <a class="btn btn-block btn-info" href="http://bootstrap-tutorial.bootstraptor.com"><i class="icon-eye-open"></i> Preview</a>
+                                    </div>
+                                    <div class="span6">
+                                      <a class="btn btn-block btn-info" href="http://bootstrap-tutorial.bootstraptor.com"><i class="icon-info-sign"></i> More info</a>
+                                    </div>
+                              </div>
+                            </div>
+                    	</div>
+                    </div> -->
+
+                      </div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-sm-push-4">
+                            <ul class="pagination">
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">6</a></li>
+                                <li><a href="#">7</a></li>
+                                <li><a href="#">8</a></li>
+                                <li><a href="#">9</a></li>
+                                <li><a href="#">10</a></li>
+                            </ul>
+                    </div>
+                </div> -->
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>Copyright ©</p>
+                        <p>Droit d'auteur : les textes sont disponibles sous licence Creative Commons attribution, partage dans les mêmes conditions ; d’autres conditions peuvent s’appliquer. Voyez les conditions d’utilisation pour plus de détails, ainsi que les crédits graphiques. En cas de réutilisation des textes de cette page, voyez comment citer les auteurs et mentionner la licence.
+Wikipedia® est une marque déposée de la Wikimedia Foundation, Inc., organisation de bienfaisance régie par le paragraphe 501(c)(3) du code fiscal des États-Unis.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script type="text/javascript" src="./static/external/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="./static/external/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./static/javascript/catalogue.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="./static/external/paginate/src/jquery.paginate.js"></script>
+        <script type="text/javascript" src="./static/external/seiyria-bootstrap-slider/dist/bootstrap-slider.js"></script>
+        <script type="text/javascript" src="./static/javascript/script_catalog.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+            for (var i = 0; i < catalog.length; i++) {
+                $('<div class="span3 box col-xs-12 col-sm-3"></div>').appendTo($("#portfolio")).append($('<div class="thumbnail"></div>').append($('<img>').attr("src", catalog[i].thumb)).append($('<div class="caption">').append($('<h4></h4>').html(catalog[i].name)).append($('<p>').html(catalog[i].description.substring(0, 100)))))
+            }
+            // $('#ordrecroissant').click(function(){
+            //     catalog.sort(function(a, b){return a-b});
+            // })
+            // $('#ordredecroissant').click(function(){
+            //     catalog.reverse();
+            // })
+            // $('#prixcroissant').click(function(){
+            //     catalog[i].price.sort(function(a, b){return a-b});
+            // })
+            //
+            // $(".pagination li a").click(function(){
+            //     $(".pagination li").removeClass()
+            //     $(this).parent().addClass("active")
+            //     $('#portfolio').children().remove();
+            //     var page = $(this).html()*11
+            //     var page2 = page-11
+            //
+            //     for (var i = page2; i < page; i++) {
+            //
+            //         $('<div class="span3 box col-xs-12 col-sm-3"></div>').appendTo($("#portfolio")).append($('<div class="thumbnail"></div>').append($('<img>').attr("src", catalog[i].thumb)).append($('<div class="caption">').append($('<h4></h4>').html(catalog[i].name)).append($('<a href="index3.html?index='+i+'">Voir Plus</a>')).append($('<p>').html(catalog[i].description.substring(0, 100)))))
+            //     }
+            // })
+
+            $('#ex1').slider({
+            	formatter: function(value) {
+            		return 'Prix: ' + value;
+            	}
+            });
+            $('#ex2').slider({
+            	formatter: function(value) {
+            		return 'Prix: ' + value;
+            	}
+            });
+            $("#applique").click(function(){
+                $('#portfolio').data('paginate').kill()
+                $('#portfolio').children().remove();
+                var nombreArticle = 0;
+                for (var j = 0; j < catalog.length ; j++) {
+                    if (catalog[j].price > $('#ex1').val() && catalog[j].price < $('#ex2').val()) {
+                        $('<div class="span3 box col-xs-12 col-sm-3"></div>').appendTo($("#portfolio")).append($('<div class="thumbnail"></div>').append($('<img>').attr("src", catalog[j].thumb)).append($('<div class="caption">').append($('<h4></h4>').html(catalog[j].name)).append($('<a href="index3.html?index='+j+'">Voir Plus</a>')).append($("<h5></h5>").html(catalog[j].price)).append($('<p>').html(catalog[j].description.substring(0, 100)))))
+                    }else{
+                    }
+                }
+                $('#portfolio').paginate({ 'perPage': 11 });
+                $('#portfolio').paginate({ 'scope': $('.thumbnail') });
+
+            })
+            $('#portfolio').paginate({ 'perPage': 11 });
+            $('#portfolio').paginate({ 'scope': $('.thumbnail') });
+
+        })
+        </script>
+    </body>
+</html>

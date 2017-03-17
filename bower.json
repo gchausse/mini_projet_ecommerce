@@ -1,0 +1,25 @@
+{
+  "name": "mini-projet_boutique",
+  "authors": [
+    "guillaume <guillaume.chausse@live.fr>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/external/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "rangeslider.js": "^2.3.0",
+    "powerange": "^0.0.2",
+    "seiyria-bootstrap-slider": "^9.7.2",
+    "paginate": "^0.3.0"
+  }
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Homepage</title>
+        <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=News+Cycle" rel="stylesheet">
+        <link rel="stylesheet" href="./static/external/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./static/css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class="page-header">
+                <div class="container">
+                    <div class="row">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <div class="col-xs-12">
+                                    <h1 class="navbar-brand col-xs-12">La Boutique des Objets Révolutionnaires</h1>
+                                    <div class="navbar-toggle col-xs-12">
+                                            <button class="collapsed btn btn-default navbar-btn pull-right" type="button" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                                               <span class="glyphicon glyphicon-menu-hamburger"></span></button>
+                                        <div class="collapse navbar-collapse" id="menu">
+                                             <ul class="list-group">
+                                                 <li><a href="./index1.html" class="list-group-item">Home</a></li>
+                                                 <li><a href="./index2.html" class="list-group-item">Recherche</a></li>
+                                                 <li><a href="./index3.html" class="list-group-item">Panier</a></li>
+                                                 <li><a href="./index4.html" class="list-group-item">Panier</a></li>
+                                                 <li><a href="./index5.html" class="list-group-item">Contact</a></li>
+                                             </ul>
+                                        </div>
+                                    </div>
+                                    <ul class="nav navbar-nav grand-ecran col-sm-12">
+                                        <li><a href="./index.html">Home</a></li>
+                                        <li><a href="./index2.html">Recherche</a></li>
+                                        <li><a href="./index3.html">Page Produit</a></li>
+                                        <li class="active"><a href="./index4.html">Panier</a></li>
+                                        <li><a href="./index5.html">Contact</a></li>
+                                    </ul>
+                               </div>
+                           </div>
+                       </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div class="row" id="pagetableau">
+                    <div class="col-xs-12">
+                        <h2>Votre Panier</h2>
+                        <button type="button" name="button" id="viderpanier">Vider le panier</button>
+                        <div class="table-responsive">
+                             <table class="table table-bordered">
+                                 <thead>
+                                    <tr>
+                                      <th>Produit</th>
+                                      <th>Prix Unitaire</th>
+                                      <th>Quantité</th>
+                                      <th>Prix total HT</th>
+                                      <th>Prix total TTC</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody id="tableau" class="table-hover">
+                                  </tbody>
+                             </table>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-xs-push-6">
+                        <div class="table-responsive">
+                             <table class="table table-bordered">
+                                 <thead>
+                                    <tr>
+                                      <th>Prix total des articles HT</th>
+                                      <th>Prix total des articles TTC</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody class="table-hover">
+                                    <tr id="prixtoto">
+                                      <td scope="row"></td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                             </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>Copyright ©</p>
+                        <p>Droit d'auteur : les textes sont disponibles sous licence Creative Commons attribution, partage dans les mêmes conditions ; d’autres conditions peuvent s’appliquer. Voyez les conditions d’utilisation pour plus de détails, ainsi que les crédits graphiques. .</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script type="text/javascript" src="./static/external/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="./static/external/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./static/javascript/catalogue.js"></script>
+        <script type="text/javascript" src="./static/javascript/script.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            var panier_json = localStorage.getItem("objet");
+            var panier = JSON.parse(panier_json);
+            var totalht = 0;
+            var totalttc = 0;
+            console.log(Object.keys(panier).length)
+            if(Object.keys(panier).length < 1){
+                $("#tableau").append($("<tr></tr>").append($("<td>Votre panier est vide</td>").css('text-align', 'center')));
+            }
+            for (var x in panier) {
+
+                $("#tableau").append($('<tr></tr>').append($('<td scope="row"></td>').html(catalog[x].name).append('<button class="suprime">Supprimer</button>')).append($('<td></td>').html(catalog[x].price)).append($('<td id='+x+'></td>').append($('<span></span>').html(panier[x])).append('<button class="plus">+</button><button  class="moins">-</button>')).append($('<td></td>').html((catalog[x].price*panier[x]).toFixed(2))).append($('<td></td>').html((catalog[x].price*panier[x]*1.2).toFixed(2))))
+
+                totalht = totalht + parseFloat((catalog[x].price*panier[x]))
+                $("#prixtoto td:nth-child(1)").html(totalht.toFixed(2)+" Euros");
+
+                totalttc = totalttc + parseFloat((catalog[x].price*panier[x]*1.2));
+                $("#prixtoto td:nth-child(2)").html(totalttc.toFixed(2)+" Euros");
+            }
+
+            $(".plus").click(function(){
+                var modifquantite = $($(this).parent()).attr('id')
+                console.log(modifquantite);
+                panier[modifquantite] = panier[modifquantite] + 1;
+                panier_json = JSON.stringify(panier);
+                localStorage.setItem("objet",panier_json);
+
+                $(this).parent().find("span").html(panier[modifquantite]);
+                $(this).parent().next().html((catalog[modifquantite].price*panier[modifquantite]));
+                $(this).parent().next().next().html((catalog[modifquantite].price*panier[modifquantite]*1.2));
+
+                panier_json = localStorage.getItem("objet");
+                panier = JSON.parse(panier_json);
+                $("#prixtoto td:nth-child(2)").html();
+                $("#prixtoto td:nth-child(1)").html();
+                totalht = 0;
+                totalttc = 0;
+                for (var x in panier) {
+                    totalht = totalht + parseFloat((catalog[x].price*panier[x]))
+                    totalttc = totalttc + parseFloat((catalog[x].price*panier[x]*1.2));
+                }
+                $("#prixtoto td:nth-child(2)").html(totalttc.toFixed(2)+" Euros");
+                $("#prixtoto td:nth-child(1)").html(totalht.toFixed(2)+" Euros");
+
+            })
+
+            $(".moins").click(function(){
+                var modifquantite = $($(this).parent()).attr('id')
+                if(panier[modifquantite] > 0){
+                    panier[modifquantite]--;
+                    panier_json = JSON.stringify(panier);
+                    localStorage.setItem("objet",panier_json);
+
+                    $(this).parent().find("span").html(panier[modifquantite]);
+                    $(this).parent().find("span").html(panier[modifquantite]);
+                    $(this).parent().next().html((catalog[modifquantite].price*panier[modifquantite]));
+                    $(this).parent().next().next().html((catalog[modifquantite].price*panier[modifquantite]*1.2));
+
+                    panier_json = localStorage.getItem("objet");
+                    panier = JSON.parse(panier_json);
+                    $("#prixtoto td:nth-child(2)").html();
+                    $("#prixtoto td:nth-child(1)").html();
+                    totalht = 0;
+                    totalttc = 0;
+                    for (var x in panier) {
+                        totalht = totalht + parseFloat((catalog[x].price*panier[x]))
+                        totalttc = totalttc + parseFloat((catalog[x].price*panier[x]*1.2));
+                    }
+                    $("#prixtoto td:nth-child(2)").html(totalttc.toFixed(2)+" Euros");
+                    $("#prixtoto td:nth-child(1)").html(totalht.toFixed(2)+" Euros");
+                }
+
+            })
+            $(".suprime").click(function(){
+                delete panier[$(this).parent().next().next().attr('id')];
+                panier_json = JSON.stringify(panier);
+                localStorage.setItem("objet",panier_json);
+                panier_json = localStorage.getItem("objet");
+                panier = JSON.parse(panier_json);
+                $(this).parent().parent().remove();
+                totalht = 0;
+                totalttc = 0;
+
+                for (var x in panier) {
+                    totalht = totalht + parseFloat((catalog[x].price*panier[x]))
+                    totalttc = totalttc + parseFloat((catalog[x].price*panier[x]*1.2));
+                }
+                $("#prixtoto td:nth-child(2)").html(totalttc.toFixed(2)+" Euros");
+                $("#prixtoto td:nth-child(1)").html(totalht.toFixed(2)+" Euros");
+
+            })
+            $("#viderpanier").click(function(){
+                panier = {};
+                panier_json = JSON.stringify(panier);
+                localStorage.setItem("objet",panier_json);
+                $("#tableau").children().remove();
+                $("#prixtoto td:nth-child(2)").html("0 Euros");
+                $("#prixtoto td:nth-child(1)").html("0 Euros");
+                $("#tableau").append($("<tr></tr>").append($("<td>Votre panier est vide</td>").css('text-align', 'center')));
+                console.log(panier.length);
+            })
+        })
+        </script>
+    </body>
+</html>
